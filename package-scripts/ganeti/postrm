@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Perform necessary ganeti removal steps
+# after package is uninstalled.
+#
+
+echo "ganeti has been uninstalled!"
+
+exit 0
