@@ -1,7 +1,7 @@
 
 name 'ganeti'
-maintainer 'CHANGE ME'
-homepage 'CHANGEME.com'
+maintainer 'Lance Albertson'
+homepage 'https://code.google.com/p/ganeti/'
 
 replaces        'ganeti'
 install_path    '/opt/ganeti'
@@ -12,7 +12,7 @@ build_iteration 1
 dependency 'preparation'
 
 # ganeti dependencies/components
-# dependency 'somedep'
+dependency 'ganeti'
 
 # version manifest file
 dependency 'version-manifest'

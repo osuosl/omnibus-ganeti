@@ -1,7 +1,7 @@
 driver:
   name: vagrant
   customize:
-    cpus: 2
+    cpus: 4
     memory: 2048
   synced_folders:
     - ['.', '/home/vagrant/ganeti']

@@ -1,0 +1,15 @@
+name "ganeti-common-haskell"
+
+dependency 'ghc-crypto'
+dependency 'ghc-base64-bytestring'
+dependency 'ghc-curl'
+dependency 'ghc-hinotify'
+dependency 'ghc-json'
+dependency 'ghc-network'
+dependency 'ghc-hslogger'
+dependency 'ghc-regex-pcre'
+dependency 'ghc-attoparsec'
+dependency 'ghc-lifted-base'
+dependency 'ghc-utf8-string'
+dependency 'ghc-vector'
+dependency 'ghc-lens'
