@@ -5,12 +5,46 @@
 #
 
 PROGNAME=$(basename $0)
+INSTALLER_DIR="/opt/ganeti"
+PREFIX="/usr"
 
 function error_exit
 {
   echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
   exit 1
 }
+
+ganeti_sbin="ganeti-cleaner ganeti-confd ganeti-kvmd ganeti-listrunner
+    ganeti-luxid ganeti-masterd ganeti-noded ganeti-rapi ganeti-watcher
+    gnt-backup gnt-cluster gnt-debug gnt-group gnt-instance gnt-job gnt-network
+    gnt-node gnt-os gnt-storage"
+ganeti_bin="harep hbal hcheck hinfo hroller hscan hspace hsqueeze"
+
+for i in $ganeti_sbin ; do
+    if [ -f $INSTALLER_DIR/embedded/sbin/${i} ] ; then
+        ln -sf $INSTALLER_DIR/embedded/sbin/${i} $PREFIX/sbin \
+            || error_exit "Cannot link $i to $PREFIX/sbin"
+        ln -sf $INSTALLER_DIR/embedded/share/man/man8/${i}.8 \
+            $PREFIX/share/man/man8/${i}.8 \
+            || error_exit "Cannot link $i to $PREFIX/share/man/man8"
+    fi
+done
+
+for i in $ganeti_bin ; do
+    if [ -f $INSTALLER_DIR/embedded/bin/${i} ] ; then
+        ln -sf $INSTALLER_DIR/embedded/bin/${i} $PREFIX/bin \
+            || error_exit "Cannot link $i to $PREFIX/bin"
+        ln -sf $INSTALLER_DIR/embedded/share/man/man1/${i}.1 \
+            $PREFIX/share/man/man1/${i}.1 \
+            || error_exit "Cannot link $i to $PREFIX/share/man/man1"
+    fi
+done
+
+mkdir -p /var/{run,log}/ganeti
+mkdir -p $INSTALLER_DIR/var/{run,log}
+ln -sf /var/run/ganeti $INSTALLER_DIR/var/run/ganeti
+ln -sf /var/log/ganeti $INSTALLER_DIR/var/log/ganeti
+ln -sf $INSTALLER_DIR/etc/ganeti /etc/ganeti
 
 echo "Thank you for installing ganeti!"
 
