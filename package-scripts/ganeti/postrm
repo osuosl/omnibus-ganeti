@@ -7,19 +7,19 @@
 PREFIX="/usr"
 
 ganeti_sbin="ganeti-cleaner ganeti-confd ganeti-kvmd ganeti-listrunner
-    ganeti-luxid ganeti-masterd ganeti-noded ganeti-rapi ganeti-watcher
-    gnt-backup gnt-cluster gnt-debug gnt-group gnt-instance gnt-job gnt-network
-    gnt-node gnt-os gnt-storage"
+  ganeti-luxid ganeti-masterd ganeti-noded ganeti-rapi ganeti-watcher gnt-backup
+  gnt-cluster gnt-debug gnt-group gnt-instance gnt-job gnt-network gnt-node
+  gnt-os gnt-storage"
 ganeti_bin="harep hbal hcheck hinfo hroller hscan hspace hsqueeze"
 
 for i in $ganeti_sbin ; do
-    rm -f $PREFIX/sbin/${i}
-    rm -f $PREFIX/share/man/man8/${i}.8
+  rm -f $PREFIX/sbin/${i}
+  rm -f $PREFIX/share/man/man8/${i}.8
 done
 
 for i in $ganeti_bin ; do
-    rm -f $PREFIX/bin/${i}
-    rm -f $PREFIX/share/man/man1/${i}.1
+  rm -f $PREFIX/bin/${i}
+  rm -f $PREFIX/share/man/man1/${i}.1
 done
 
 rm -f /etc/ganeti
