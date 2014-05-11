@@ -22,7 +22,7 @@ for i in $ganeti_bin ; do
   rm -f $PREFIX/share/man/man1/${i}.1
 done
 
-rm -f /etc/ganeti
+rm -f /etc/ganeti /etc/init.d/ganeti
 
 echo "ganeti has been uninstalled!"
 

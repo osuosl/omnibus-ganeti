@@ -46,4 +46,9 @@ build do
   command sed
   command "make -j #{max_build_jobs}", :env => env
   command "make install", :env => env
+  command "mkdir -p #{install_dir}/etc/init.d"
+  command "mkdir -p #{install_dir}/etc/cron.d"
+  command "cp doc/examples/ganeti.initd #{install_dir}/etc/init.d/ganeti"
+  command "cp doc/examples/ganeti.cron #{install_dir}/etc/cron.d/ganeti.cron"
+  command "chmod +x #{install_dir}/etc/init.d/ganeti"
 end

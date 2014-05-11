@@ -40,12 +40,14 @@ for i in $ganeti_bin ; do
   fi
 done
 
-mkdir -p /var/{run,log,lib}/ganeti
-mkdir -p $INSTALLER_DIR/var/{run,log,lib}
-ln -sf /var/run/ganeti $INSTALLER_DIR/var/run/ganeti
-ln -sf /var/log/ganeti $INSTALLER_DIR/var/log/ganeti
-ln -sf /var/lib/ganeti $INSTALLER_DIR/var/lib/ganeti
+#mkdir -p /var/{run,log,lib}/ganeti
+mkdir -p $INSTALLER_DIR/var/{run,log,lib,lock}/ganeti
+ln -sf $INSTALLER_DIR/var/run/ganeti /var/run/ganeti
+ln -sf $INSTALLER_DIR/var/log/ganeti /var/log/ganeti
+ln -sf $INSTALLER_DIR/var/lib/ganeti /var/lib/ganeti
+ln -sf $INSTALLER_DIR/var/lock/ganeti /var/lock/ganeti
 ln -sf $INSTALLER_DIR/etc/ganeti /etc/ganeti
+ln -sf $INSTALLER_DIR/etc/init.d/ganeti /etc/init.d/ganeti
 
 echo "Thank you for installing ganeti!"
 
