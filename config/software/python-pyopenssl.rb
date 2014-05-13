@@ -2,6 +2,7 @@ name "python-pyopenssl"
 default_version "0.14"
 
 dependency 'pip'
+dependency 'libffi'
 
 pip_install = "embedded/bin/pip install -I --build #{project_dir}"
 
