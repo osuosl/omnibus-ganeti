@@ -32,6 +32,7 @@ configure = ["./configure",
 
 sed = ["sed -i -e 's/\\!\\/usr/\\!\\/opt\\/ganeti\\/embedded/'",
        "autotools/build-bash-completion",
+       "autotools/convert-constants",
        "Makefile"].join(" ")
 
 env = {
