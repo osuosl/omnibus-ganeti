@@ -1,15 +1,20 @@
 DEPENDENCIES
   apt (~> 2.0)
+  haskell-platform
+    git: git://github.com/osuosl-cookbooks/haskell-platform.git
+    revision: 1d67ac882705545a36d43012e14bfdb988d466b8
   omnibus
 
 GRAPH
   7-zip (1.0.2)
     windows (>= 1.2.2)
   apt (2.3.10)
-  build-essential (2.0.0)
-  chef-sugar (1.2.8)
+  build-essential (2.0.2)
+  chef-sugar (1.3.0)
   chef_handler (1.1.6)
-  homebrew (1.6.0)
+  haskell-platform (0.1.1)
+    yum-epel (>= 0.0.0)
+  homebrew (1.6.4)
   omnibus (2.0.2)
     7-zip (~> 1.0)
     build-essential (~> 2.0)
@@ -17,7 +22,10 @@ GRAPH
     homebrew (~> 1.5)
     windows (~> 1.30)
     wix (~> 1.1)
-  windows (1.30.2)
+  windows (1.31.0)
     chef_handler (>= 0.0.0)
   wix (1.1.0)
     windows (>= 1.2.2)
+  yum (3.2.0)
+  yum-epel (0.3.6)
+    yum (~> 3.0)

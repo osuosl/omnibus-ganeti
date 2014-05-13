@@ -21,7 +21,9 @@ platforms:
 
 suites:
   - name: default
-    run_list: omnibus::default
+    run_list:
+      - omnibus::default
+      - haskell-platform::default
     attributes:
       omnibus:
         build_user:  vagrant

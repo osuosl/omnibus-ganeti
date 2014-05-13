@@ -8,3 +8,4 @@ cookbook 'omnibus'
 
 # Uncomment to use the latest version of the Omnibus cookbook from GitHub
 # cookbook 'omnibus', github: 'opscode-cookbooks/omnibus'
+cookbook "haskell-platform" , github: "osuosl-cookbooks/haskell-platform"
