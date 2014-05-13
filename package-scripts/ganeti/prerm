@@ -12,4 +12,8 @@ function error_exit
   exit 1
 }
 
+echo "Shutting down ganeti"
+
+/usr/sbin/service ganeti stop || error_exit "failed to stop ganeti"
+
 exit 0
