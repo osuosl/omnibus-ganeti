@@ -1,0 +1,68 @@
+---
+driver_config:
+  openstack_username: <%= ENV['OS_USERNAME'] %>
+  openstack_api_key: <%= ENV['OS_PASSWORD'] %>
+  openstack_auth_url: <%= ENV['OS_AUTH_URL'] %>
+  key_name: <%= ENV['OS_SSH_KEYPAIR'] %>
+  private_key_path: <%= ENV['OS_SSH_KEY'] %>
+  openstack_tenant: <%= ENV['OS_TENANT'] %>
+  floating_ip: <%= ENV['OS_FLOATING_IP'] %>
+  flavor_ref: omnibus-builder
+
+provisioner:
+  name: chef_solo
+  attributes:
+    authorization:
+      sudo:
+        users:
+          - vagrant
+          - centos
+          - ubuntu
+          - fedora
+    omnibus_updater:
+      disabled: true
+
+platforms:
+- name: centos-6.5
+  driver_plugin: openstack
+  driver_config:
+    username: centos
+    image_ref: "centos-6.5-omnibus"
+    floating_ip: 10.1.100.40
+  attributes:
+    omnibus:
+      build_user: centos
+      build_dir: /home/centos/ganeti
+    haskell-platform:
+      repo_source: justhub
+      version: "1-4.0.el6"
+- name: ubuntu-12.04
+  driver_plugin: openstack
+  driver_config:
+    username: ubuntu
+    image_ref: "ubuntu-12.04-omnibus"
+    floating_ip: 10.1.100.41
+  attributes:
+    omnibus:
+      build_user: ubuntu
+      build_dir: /home/ubuntu/ganeti
+- name: debian-7
+  driver_plugin: openstack
+  driver_config:
+    username: debian
+    image_ref: "debian-7-omnibus"
+    floating_ip: 10.1.100.39
+  attributes:
+    omnibus:
+      build_user: debian
+      build_dir: /home/debian/ganeti
+
+suites:
+  - name: default
+    run_list:
+      - apt::default
+      - omnibus::default
+      - haskell-platform::default
+    attributes:
+      omnibus:
+        install_dir: /opt/ganeti
