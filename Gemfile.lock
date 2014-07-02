@@ -1,12 +1,25 @@
 GIT
+  remote: git://github.com/opscode/omnibus-ruby.git
+  revision: 2d1d71480a4b8f2bfc20a90e04ef9a8eb0c803e1
+  specs:
+    omnibus (3.1.1)
+      chef-sugar (~> 1.2)
+      fpm (~> 0.4)
+      mixlib-config (~> 2.1)
+      mixlib-shellout (~> 1.4)
+      ohai (~> 6.12)
+      thor (~> 0.18)
+      uber-s3
+
+GIT
   remote: git://github.com/opscode/omnibus-software.git
-  revision: a2080582f3fd00558c5deb6567bff8f16535bdc8
+  revision: 40f75279c5198d5be6a11642dd6bb1e534bfbba5
   specs:
     omnibus-software (0.0.1)
 
 GIT
   remote: git://github.com/test-kitchen/kitchen-vagrant.git
-  revision: e92f7b2147b8f8a138ca17209a6ff84f3b42c973
+  revision: cf9350a8c5c6037f95f359a619ac403c38f48272
   specs:
     kitchen-vagrant (0.15.0)
       test-kitchen (~> 1.0)
@@ -18,59 +31,61 @@ GEM
     arr-pm (0.0.9)
       cabin (> 0)
     backports (3.6.0)
-    berkshelf (3.0.1)
+    berkshelf (3.1.3)
       addressable (~> 2.3.4)
       berkshelf-api-client (~> 1.2)
-      buff-config (~> 0.2)
-      buff-extensions (~> 0.4)
+      buff-config (~> 1.0)
+      buff-extensions (~> 1.0)
       buff-shell_out (~> 0.1)
       celluloid (~> 0.16.0.pre)
       celluloid-io (~> 0.16.0.pre)
       faraday (~> 0.9.0)
       minitar (~> 0.5.4)
-      octokit (~> 2.6)
+      octokit (~> 3.0)
       retryable (~> 1.3.3)
-      ridley (~> 3.0)
+      ridley (~> 4.0)
       solve (~> 1.1)
       thor (~> 0.18)
     berkshelf-api-client (1.2.0)
       faraday (~> 0.9.0)
-    buff-config (0.4.0)
-      buff-extensions (~> 0.3)
-      varia_model (~> 0.1)
-    buff-extensions (0.5.0)
+    buff-config (1.0.0)
+      buff-extensions (~> 1.0)
+      varia_model (~> 0.4)
+    buff-extensions (1.0.0)
     buff-ignore (1.1.1)
     buff-ruby_engine (0.1.0)
     buff-shell_out (0.1.1)
       buff-ruby_engine (~> 0.1.0)
     builder (3.2.2)
     cabin (0.6.1)
-    celluloid (0.16.0.pre)
-      timers (~> 2.0.0)
-    celluloid-io (0.16.0.pre)
+    celluloid (0.16.0.pre2)
+      timers (~> 3.0.0)
+    celluloid-io (0.16.0.pre2)
       celluloid (>= 0.16.0.pre)
       nio4r (>= 1.0.0)
     chef-sugar (1.3.0)
     childprocess (0.5.3)
       ffi (~> 1.0, >= 1.0.11)
     clamp (0.6.3)
-    dep-selector-libgecode (1.0.0)
+    dep-selector-libgecode (1.0.2)
     dep_selector (1.0.3)
       dep-selector-libgecode (~> 1.0)
       ffi (~> 1.9)
     erubis (2.7.0)
-    excon (0.33.0)
+    excon (0.37.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
-    fog (1.22.0)
+    fog (1.22.1)
       fog-brightbox
-      fog-core (~> 1.21, >= 1.21.1)
+      fog-core (~> 1.22)
       fog-json
+      ipaddress (~> 0.5)
       nokogiri (~> 1.5, >= 1.5.11)
-    fog-brightbox (0.0.2)
-      fog-core
+    fog-brightbox (0.1.1)
+      fog-core (~> 1.22)
       fog-json
+      inflecto
     fog-core (1.22.0)
       builder
       excon (~> 0.33)
@@ -80,14 +95,13 @@ GEM
       net-ssh (>= 2.1.3)
     fog-json (1.0.0)
       multi_json (~> 1.0)
-    formatador (0.2.4)
-    fpm (1.0.2)
+    formatador (0.2.5)
+    fpm (0.4.42)
       arr-pm (~> 0.0.8)
       backports (>= 2.6.2)
       cabin (>= 0.6.0)
       childprocess
       clamp (~> 0.6)
-      ffi
       ftw (~> 0.0.30)
       json (>= 1.7.7)
     ftw (0.0.39)
@@ -95,17 +109,19 @@ GEM
       backports (>= 2.6.2)
       cabin (> 0)
       http_parser.rb (= 0.5.3)
-    hashie (2.1.1)
+    hashie (2.1.2)
     hitimes (1.2.1)
     http_parser.rb (0.5.3)
+    inflecto (0.0.2)
     ipaddress (0.8.0)
     json (1.8.1)
-    kitchen-openstack (1.4.0)
+    kitchen-openstack (1.5.2)
       fog (~> 1.18)
+      ohai
       test-kitchen (~> 1.1)
       unf
     mime-types (1.25.1)
-    mini_portile (0.5.3)
+    mini_portile (0.6.0)
     minitar (0.5.4)
     mixlib-authentication (1.3.0)
       mixlib-log
@@ -113,17 +129,17 @@ GEM
     mixlib-config (2.1.0)
     mixlib-log (1.6.0)
     mixlib-shellout (1.4.0)
-    multi_json (1.10.0)
+    multi_json (1.10.1)
     multipart-post (2.0.0)
     net-http-persistent (2.9.4)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
     nio4r (1.0.0)
-    nokogiri (1.6.2)
-      mini_portile (~> 0.5.2)
-    octokit (2.7.2)
-      sawyer (~> 0.5.2)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
+    octokit (3.2.0)
+      sawyer (~> 0.5.3)
     ohai (6.22.0)
       ipaddress
       mixlib-cli
@@ -132,32 +148,24 @@ GEM
       mixlib-shellout
       systemu (~> 2.5.2)
       yajl-ruby
-    omnibus (3.0.0)
-      chef-sugar (~> 1.2)
-      fpm (~> 1.0.0)
-      mixlib-config (~> 2.1)
-      mixlib-shellout (~> 1.3)
-      ohai (~> 6.12)
-      thor (>= 0.16.0)
-      uber-s3
     retryable (1.3.5)
-    ridley (3.1.0)
+    ridley (4.0.0)
       addressable
-      buff-config (~> 0.2)
-      buff-extensions (~> 0.3)
+      buff-config (~> 1.0)
+      buff-extensions (~> 1.0)
       buff-ignore (~> 1.1)
       buff-shell_out (~> 0.1)
       celluloid (~> 0.16.0.pre)
       celluloid-io (~> 0.16.0.pre)
       erubis
       faraday (~> 0.9.0)
-      hashie (>= 2.0.2)
+      hashie (>= 2.0.2, < 3.0.0)
       json (>= 1.7.7)
       mixlib-authentication (>= 1.3.0)
       net-http-persistent (>= 2.8)
       retryable
       semverse (~> 1.1)
-      varia_model (~> 0.3)
+      varia_model (~> 0.4)
     safe_yaml (1.0.3)
     sawyer (0.5.4)
       addressable (~> 2.3.5)
@@ -174,25 +182,25 @@ GEM
       safe_yaml (~> 1.0)
       thor (~> 0.18)
     thor (0.19.1)
-    timers (2.0.0)
+    timers (3.0.1)
       hitimes
     uber-s3 (0.2.4)
       mime-types (~> 1.17)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.6)
-    varia_model (0.3.2)
-      buff-extensions (~> 0.2)
-      hashie (>= 2.0.2)
-    yajl-ruby (1.2.0)
+    varia_model (0.4.0)
+      buff-extensions (~> 1.0)
+      hashie (>= 2.0.2, < 3.0.0)
+    yajl-ruby (1.2.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  berkshelf (~> 3.0.0.beta)
+  berkshelf (~> 3.0)
   kitchen-openstack
   kitchen-vagrant!
-  omnibus (~> 3.0)
+  omnibus!
   omnibus-software!
   test-kitchen (~> 1.2)
