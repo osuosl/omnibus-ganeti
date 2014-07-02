@@ -1,8 +1,6 @@
 name "cabal-update"
 
 build do
-  # clean out any previous installation details
-  command "rm -rf ~/.cabal ~/.ghc"
   # pull in latest package db
-  command "/usr/bin/cabal update"
+  command "#{install_dir}/embedded/bin/cabal update"
 end
