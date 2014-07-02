@@ -3,7 +3,6 @@ name 'ganeti'
 maintainer 'Lance Albertson'
 homepage 'https://code.google.com/p/ganeti/'
 
-replaces        'ganeti'
 install_path    '/opt/ganeti'
 #build_version   Omnibus::BuildVersion.new.semver
 build_version   '2.11.0'
