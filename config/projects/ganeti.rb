@@ -5,7 +5,7 @@ homepage 'https://code.google.com/p/ganeti/'
 
 install_path    '/opt/ganeti'
 #build_version   Omnibus::BuildVersion.new.semver
-build_version   '2.11.0'
+build_version   '2.11.2'
 build_iteration 1
 
 # creates required build directories

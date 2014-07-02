@@ -1,8 +1,8 @@
 name "ganeti"
-default_version "2.11.0"
+default_version "2.11.2"
 
-version "2.11.0" do
-  source md5: "2c186d48b56b7d4083161c241f91febe"
+version "2.11.2" do
+  source md5: "c89c5e74feb57b1b377755fe7a9b2ade"
 end
 
 version "2.10.3" do
@@ -30,10 +30,11 @@ configure = ["./configure",
            "--localstatedir=#{install_dir}/var",
            "--sysconfdir=#{install_dir}/etc"].join(" ")
 
-sed = ["sed -i -e 's/\\!\\/usr/\\!\\/opt\\/ganeti\\/embedded/'",
-       "autotools/build-bash-completion",
-       "autotools/convert-constants",
-       "Makefile"].join(" ")
+sed = "sed -i -e 's/\\!\\/usr/\\!\\/opt\\/ganeti\\/embedded/' -e 's/\\-Werror\\(,\\|\\)//'"
+#sed = ["sed -i -e 's/\\!\\/usr/\\!\\/opt\\/ganeti\\/embedded/'",
+#       "autotools/build-bash-completion",
+#       "autotools/convert-constants",
+#       "Makefile"].join(" ")
 
 env = {
   "LDFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
@@ -44,7 +45,12 @@ env = {
 
 build do
   command configure, :env => env
-  command sed
+  command "#{sed} autotools/build-bash-completion"
+  command "#{sed} autotools/build-rpc"
+  command "#{sed} Makefile"
+  if version == "2.8.4"
+    command "#{sed} autotools/convert-constants"
+  end
   command "make -j #{max_build_jobs}", :env => env
   command "make install", :env => env
   command "mkdir -p #{install_dir}/etc/init.d"
@@ -52,4 +58,5 @@ build do
   command "cp doc/examples/ganeti.initd #{install_dir}/etc/init.d/ganeti"
   command "cp doc/examples/ganeti.cron #{install_dir}/etc/cron.d/ganeti.cron"
   command "chmod +x #{install_dir}/etc/init.d/ganeti"
+#  command "rm -rf #{install_dir}/embedded/bin/cabal"
 end
