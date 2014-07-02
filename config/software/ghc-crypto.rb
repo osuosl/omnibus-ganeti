@@ -1,12 +1,12 @@
 name "ghc-crypto"
 default_version "4.2.5.1"
 
-dependency 'cabal-update'
+dependency 'cabal-install'
 dependency 'patchelf'
 dependency 'libffi'
 dependency 'gmp'
 
-cabal_install = ["/usr/bin/cabal install",
+cabal_install = ["#{install_dir}/embedded/bin/cabal install",
                  "--prefix=#{install_dir}/embedded",
                  "--extra-include-dirs=#{install_dir}/embedded/include",
                  "--extra-include-dirs=#{install_dir}/embedded/include/openssl",

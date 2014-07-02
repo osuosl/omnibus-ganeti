@@ -4,7 +4,7 @@ default_version "0.94.4"
 dependency 'cabal-update'
 dependency 'pcre'
 
-cabal_install = ["/usr/bin/cabal install",
+cabal_install = ["#{install_dir}/embedded/bin/cabal install",
                  "--prefix=#{install_dir}/embedded",
                  "--extra-include-dirs=#{install_dir}/embedded/include",
                  "--extra-include-dirs=#{install_dir}/embedded/include/openssl",

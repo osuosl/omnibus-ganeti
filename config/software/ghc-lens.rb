@@ -3,7 +3,7 @@ default_version '3.10'
 
 dependency 'cabal-update'
 
-cabal_install = ["/usr/bin/cabal install",
+cabal_install = ["#{install_dir}/embedded/bin/cabal install",
                  "--prefix=#{install_dir}/embedded",
                  "--extra-include-dirs=#{install_dir}/embedded/include",
                  "--extra-include-dirs=#{install_dir}/embedded/include/openssl",
