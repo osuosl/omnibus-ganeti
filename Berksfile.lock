@@ -2,7 +2,7 @@ DEPENDENCIES
   apt (~> 2.0)
   haskell-platform
     git: git://github.com/osuosl-cookbooks/haskell-platform.git
-    revision: d01c756b6f4f823a5240e3b02472578e6f3e6660
+    revision: 148bc16b609753743017411e39f2a6b48e2e4d5b
   omnibus
 
 GRAPH
@@ -12,7 +12,7 @@ GRAPH
   build-essential (2.0.4)
   chef-sugar (2.0.0)
   chef_handler (1.1.6)
-  haskell-platform (0.1.4)
+  haskell-platform (0.1.5)
     apt (>= 0.0.0)
     yum (>= 0.0.0)
     yum-epel (>= 0.0.0)
