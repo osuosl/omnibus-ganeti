@@ -22,7 +22,8 @@ patchelf_libs = [ "RSATest", "WordListTest", "QuickTest", "SymmetricTest",
 
 ganeti_haskell_deps = ["json network parallel utf8-string curl hslogger",
                        "Crypto text hinotify==0.3.2 regex-pcre zlib",
-                       "attoparsec vector base64-bytestring"].join(" ")
+                       "attoparsec vector base64-bytestring",
+                       "snap-server"].join(" ")
 
 env = {
   "CFLAGS"  => ["-I#{install_dir}/embedded/include",
