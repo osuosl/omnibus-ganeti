@@ -58,5 +58,4 @@ build do
   command "cp doc/examples/ganeti.initd #{install_dir}/etc/init.d/ganeti"
   command "cp doc/examples/ganeti.cron #{install_dir}/etc/cron.d/ganeti.cron"
   command "chmod +x #{install_dir}/etc/init.d/ganeti"
-#  command "rm -rf #{install_dir}/embedded/bin/cabal"
 end

@@ -2,6 +2,8 @@ name "cabal-install"
 default_version "1.20.0.1"
 
 dependency 'curl'
+dependency 'gmp'
+dependency 'patchelf'
 
 cabal_install = ["/usr/bin/cabal install",
                  "--prefix=#{install_dir}/embedded",
@@ -12,6 +14,9 @@ cabal_install = ["/usr/bin/cabal install",
 
 cabal_sandbox = ["#{install_dir}/embedded/bin/cabal",
                  "sandbox --sandbox=#{install_dir}/embedded init"].join(" ")
+
+patchelf = [ "#{install_dir}/embedded/bin/patchelf",
+             "--set-rpath #{install_dir}/embedded/lib"].join(" ")
 
 env = {
   "CFLAGS"  => ["-I#{install_dir}/embedded/include",
@@ -26,5 +31,6 @@ build do
   command "rm -rf ~/.cabal ~/.ghc"
   command "/usr/bin/cabal update"
   command "#{cabal_install} cabal cabal-install==#{default_version}", :env => env
+  command "#{patchelf} #{install_dir}/embedded/bin/cabal"
   command "#{cabal_sandbox}", :env => env
 end
