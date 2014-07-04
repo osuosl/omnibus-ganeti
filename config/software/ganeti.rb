@@ -1,12 +1,13 @@
 name "ganeti"
-default_version "2.11.2"
+version = ENV['GANETI_VERSION'] || '2.11.2'
+default_version "#{version}"
 
 version "2.11.2" do
   source md5: "c89c5e74feb57b1b377755fe7a9b2ade"
 end
 
-version "2.10.3" do
-  source md5: "7c59fc1be2188d248739a829b5deb002"
+version "2.10.6" do
+  source md5: "1d48496ce4afc762fd2fe5efb2b0f925"
 end
 
 version "2.9.6" do
