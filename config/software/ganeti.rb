@@ -30,11 +30,8 @@ configure = ["./configure",
            "--localstatedir=#{install_dir}/var",
            "--sysconfdir=#{install_dir}/etc"].join(" ")
 
-sed = "sed -i -e 's/\\!\\/usr/\\!\\/opt\\/ganeti\\/embedded/' -e 's/\\-Werror\\(,\\|\\)//'"
-#sed = ["sed -i -e 's/\\!\\/usr/\\!\\/opt\\/ganeti\\/embedded/'",
-#       "autotools/build-bash-completion",
-#       "autotools/convert-constants",
-#       "Makefile"].join(" ")
+sed_python = "sed -i -e 's/\\!\\/usr/\\!\\/opt\\/ganeti\\/embedded/'"
+sed_werror = "sed -i -e 's/\\-Werror\\(,\\|\\)//'"
 
 env = {
   "LDFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
@@ -44,13 +41,11 @@ env = {
 }
 
 build do
+  # Cleanup hard-coded python paths
+  command "#{sed_python} autotools/* Makefile*"
+  # Remove Werror on Debian builds
+  command "#{sed_werror} Makefile*"
   command configure, :env => env
-  command "#{sed} autotools/build-bash-completion"
-  command "#{sed} autotools/build-rpc"
-  command "#{sed} Makefile"
-  if version == "2.8.4"
-    command "#{sed} autotools/convert-constants"
-  end
   command "make -j #{max_build_jobs}", :env => env
   command "make install", :env => env
   command "mkdir -p #{install_dir}/etc/init.d"
