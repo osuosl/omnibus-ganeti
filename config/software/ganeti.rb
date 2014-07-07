@@ -18,12 +18,19 @@ version "2.8.4" do
   source md5: "6d9ddb5a9645a3d57a4f90dd92677bcc"
 end
 
-source url: "http://downloads.ganeti.org/releases/#{default_version[/\d.\d+/]}/ganeti-#{default_version}.tar.gz"
+if version =~ /^\d/
+  source url: "http://downloads.ganeti.org/releases/#{default_version[/\d.\d+/]}/ganeti-#{default_version}.tar.gz"
+else
+  source git: "git://git.ganeti.org/ganeti.git"
+end
 
 relative_path "ganeti-#{default_version}"
 
 dependency 'python'
 dependency 'ganeti-common'
+if version !~ /^\d/
+  dependency 'python-sphinx'
+end
 
 configure = ["./configure",
            "--prefix=#{install_dir}/embedded",
@@ -42,6 +49,9 @@ env = {
 }
 
 build do
+  if version !~ /^\d/
+    command "./autogen.sh"
+  end
   # Cleanup hard-coded python paths
   command "#{sed_python} autotools/* Makefile*"
   # Remove Werror on Debian builds
